@@ -1,28 +1,5 @@
       <!-- Header, navbar and footer -->
     <?php
-        if(isset($_POST.['nomUsuari'])) {
-            $nomUsuari = $_POST.['nomUsuari'];
-        }
-        if (isset($_POST.['email'])) {
-            $email = $_POST.['email'];
-        }
-
-        if (isset($_POST.['contrasena'])) {
-            $contrasena = $_POST.['contrasena'];
-        }
-
-        session_start();
-        if(isset($_SESSION['counter'])) {
-            $_SESSION['counter'] += 1;
-        } else {
-            $_SESSION['counter'] = 1;
-        }
-
-        if (isset($nomUsuari)) {
-            $_SESSION['nomUsuari'] = $nomUsuari;
-            $_SESSION['email'] = $email;
-            $_SESSION['contrasena'] = $contrasena;
-        }
 
         if(isset($nomUsuari)) {
             setcookie("nomUsuari", $nomUsuari);
