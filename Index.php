@@ -4,6 +4,12 @@
         $email = "adria2002c@gmail.com";
         $contrasena = "wee32332f";
 
+        session_start();
+
+        if(isset($nomUsuarir)) {
+            setcookie("nomUsuari", $nomUsuari);
+        }
+
         $nomDePagina = "Index";
 
         require 'header.php';
@@ -20,7 +26,7 @@
 
     <!-- Body -->
     <div class="text-center">
-        <p>Hola <?php echo $nomUsuari ?></p>
-        <p>El teu correu és: [ <?php echo $email ?> ]</p>
-        <p>La teva contrasenya és: [ <?php echo $contrasena ?> ]</p>
+        <p>Hola <?php echo $_SESSION['nomUsuari'] ?></p>
+        <p>El teu correu és: [ <?php echo $_SESSION['email'] ?> ]</p>
+        <p>La teva contrasenya és: [ <?php echo $_SESSION['contrasena'] ?> ]</p>
     </div>
