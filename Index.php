@@ -12,6 +12,10 @@
 
         require 'footer.php';
 
+        require 'usuari.php';
+
+        new usuari($nomUsuari, $email, $contrasena);
+
     ?>
 
     <!-- Body -->

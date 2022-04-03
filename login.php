@@ -8,6 +8,8 @@
 
         require 'footer.php';
 
+        require 'usuari.php';
+
     ?>
 
     <!-- Body -->
