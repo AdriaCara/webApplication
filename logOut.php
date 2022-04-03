@@ -1,10 +1,17 @@
       <!-- Header, navbar and footer -->
       <?php
-        $nomUsuari = "Adrià";
-        $email = "adria2002c@gmail.com";
-        $contrasena = "wee32332f";
 
         $nomDePagina = "Log Out";
+
+        session_start();
+
+        if( isset( $_SESSION['contador'] ) ) {
+            $_SESSION['contador'] += 1;
+         }else {
+            $_SESSION['contador'] = 1;
+         }
+
+         $cookie_name = "usuario";
 
         require 'header.php';
 
@@ -17,15 +24,29 @@
     ?>
 
     <!-- Body -->
-    <div class="container">
+    <div class="container text-center">
         <div>
-            <h1><?php echo $nomDePagina ?></h1>
+        <h1><?php echo $nomDePagina ?></h1>
 
-            <p>El teu nom d'usuari és: [<?php echo $nomUsuari ?>]</p>
-            <p>El teu correu és: [ <?php echo $email ?> ]</p>
-            <p>La teva contrasenya és: [ <?php echo $contrasena ?> ]</p>
+        <p>
+            <?php 
+                if (count($_COOKIE) > 0) {
+                    echo $_COOKIE[$cookie_name];
+                }
+            ?>
+        </p>
+        <p>El teu correu és: [ <?php echo $_SESSION['email'] ?> ]</p>
+        <p>La teva contrasenya és: [ <?php echo $_SESSION['contrasena'] ?> ]</p>
+        <p>Numero d'accions: [
+            <?php
+                echo $_SESSION['contador'];
+            ?>
+        ]
+        </p>
         </div>
         <div>
-        <button type="submit" class="btn btn-primary">Sortir i eliminar la cookie</button>
+            <form action="login.php">
+                <button type="submit" class="btn btn-primary">Sortir i eliminar la cookie</button>
+            </form>
         </div>
     </div>

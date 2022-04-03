@@ -14,12 +14,25 @@
 
         session_start();
 
-        $_SESSION['nomUsuari'] = $nomUsuari;
-        $_SESSION['email'] = $email;
-        $_SESSION['contrasena'] = $contrasena;
+        if (isset($nomUsuari)) {
+            $_SESSION['nomUsuari'] = $nomUsuari;
+        }
+        if (isset($email)) {
+            $_SESSION['email'] = $email;
+        }
+        if (isset($contrasena)) {
+            $_SESSION['contrasena'] = $contrasena;
+        }
+        if( isset( $_SESSION['contador'] ) ) {
+            $_SESSION['contador'] += 1;
+         }else {
+            $_SESSION['contador'] = 1;
+         }
 
+        $cookie_name = "usuario";
         if(isset($nomUsuari)) {
-            setcookie("nomUsuari", $nomUsuari);
+            $cookie_value = $nomUsuari;
+            setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/");
         }
 
         $nomDePagina = "Index";
@@ -32,13 +45,27 @@
 
         require 'usuari.php';
 
-        new usuari($nomUsuari, $email, $contrasena);
+        if (count($_COOKIE) < 0) {
+            new usuari($nomUsuari, $email, $contrasena);
+        }
 
     ?>
 
     <!-- Body -->
     <div class="text-center">
-        <p>Hola <?php echo $_SESSION['nomUsuari'] ?></p>
+        <p>
+            <?php 
+                if (count($_COOKIE) > 0) {
+                    echo $_COOKIE[$cookie_name];
+                }
+            ?>
+        </p>
         <p>El teu correu és: [ <?php echo $_SESSION['email'] ?> ]</p>
         <p>La teva contrasenya és: [ <?php echo $_SESSION['contrasena'] ?> ]</p>
+        <p>Numero d'accions: [
+            <?php
+                echo $_SESSION['contador'];
+            ?>
+        ]
+        </p>
     </div>

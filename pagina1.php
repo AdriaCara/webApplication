@@ -1,9 +1,17 @@
       <!-- Header, navbar and footer -->
       <?php
 
+        $nomDePagina = "Pagina1";
+
         session_start();
 
-        $nomDePagina = "Pagina1";
+        if( isset( $_SESSION['contador'] ) ) {
+            $_SESSION['contador'] += 1;
+        }else {
+            $_SESSION['contador'] = 1;
+        }
+
+        $cookie_name = "usuario";
 
         require 'header.php';
 
@@ -19,7 +27,19 @@
     <div class="container text-center">
         <h1><?php echo $nomDePagina ?></h1>
 
-        <p>Hola <?php echo $_SESSION['nomUsuari'] ?></p>
+        <p>
+            <?php 
+                if (count($_COOKIE) > 0) {
+                    echo $_COOKIE[$cookie_name];
+                }
+            ?>
+        </p>
         <p>El teu correu és: [ <?php echo $_SESSION['email'] ?> ]</p>
         <p>La teva contrasenya és: [ <?php echo $_SESSION['contrasena'] ?> ]</p>
+        <p>Numero d'accions: [
+            <?php
+                echo $_SESSION['contador'];
+            ?>
+        ]
+        </p>
     </div>

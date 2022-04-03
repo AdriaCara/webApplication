@@ -18,6 +18,9 @@
               <li class="nav-item">
                 <a class="nav-link" href="pagina2.php">Pagina2</a>
               </li>
+              <li class="nav-item">
+                <a class="nav-link" href="logOut.php">Log Out</a>
+              </li>
             </ul>
           </div>
         </div>
