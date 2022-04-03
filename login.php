@@ -1,6 +1,18 @@
       <!-- Header, navbar and footer -->
     <?php
 
+        session_start();
+        
+        if (count($_COOKIE) < 0) {
+            setcookie("usuario", $_SESSION['nomUsuari'], time() - 3600);
+        }
+
+
+        if (isset( $_SESSION['contador'])) {
+            session_unset();
+            session_destroy();
+        }
+
         if(isset($nomUsuari)) {
             setcookie("nomUsuari", $nomUsuari);
         }
