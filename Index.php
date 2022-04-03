@@ -1,8 +1,5 @@
       <!-- Header, navbar and footer -->
     <?php
-        $nomUsuari = "";
-        $email = "";
-        $contrasena = "";
 
         if(isset($_POST['nomUsuari'])) {
              $nomUsuari = $_POST['nomUsuari'];
