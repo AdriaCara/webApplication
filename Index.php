@@ -1,59 +1,59 @@
-      <!-- Header, navbar and footer -->
-    <?php
+<!-- Header, navbar and footer -->
+<?php
 
-        if(isset($_POST['nomUsuari'])) {
-             $nomUsuari = $_POST['nomUsuari'];
-        }
-        if (isset($_POST['email'])) {
-            $email = $_POST['email'];
-        }
+    if(isset($_POST['nomUsuari'])) {
+            $nomUsuari = $_POST['nomUsuari'];
+    }
+    if (isset($_POST['email'])) {
+        $email = $_POST['email'];
+    }
 
-        if (isset($_POST['contrasena'])) {
-            $contrasena = $_POST['contrasena'];
-        }
+    if (isset($_POST['contrasena'])) {
+        $contrasena = $_POST['contrasena'];
+    }
 
-        session_start();
+    session_start();
 
-        if (isset($nomUsuari)) {
-            $_SESSION['nomUsuari'] = $nomUsuari;
-        }
-        if (isset($email)) {
-            $_SESSION['email'] = $email;
-        }
-        if (isset($contrasena)) {
-            $_SESSION['contrasena'] = $contrasena;
-        }
-        if( isset( $_SESSION['contador'] ) ) {
-            $_SESSION['contador'] += 1;
-         }else {
-            $_SESSION['contador'] = 1;
-         }
-
-        $cookie_name = "usuario";
-        if(isset($nomUsuari)) {
-            $cookie_value = $nomUsuari;
-            setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/");
+    if (isset($nomUsuari)) {
+        $_SESSION['nomUsuari'] = $nomUsuari;
+    }
+    if (isset($email)) {
+        $_SESSION['email'] = $email;
+    }
+    if (isset($contrasena)) {
+        $_SESSION['contrasena'] = $contrasena;
+    }
+    if( isset( $_SESSION['contador'] ) ) {
+        $_SESSION['contador'] += 1;
+        }else {
+        $_SESSION['contador'] = 1;
         }
 
-        $nomDePagina = "Index";
+    $cookie_name = "usuario";
+    if(isset($nomUsuari)) {
+        $cookie_value = $nomUsuari;
+        setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/");
+    }
 
-        require 'header.php';
+    $nomDePagina = "Index";
 
-        include ('navbar.php');
+    require 'header.php';
 
-        require 'footer.php';
+    include ('navbar.php');
 
-        require 'usuari.php';
+    require 'footer.php';
 
-        if (count($_COOKIE) < 0) {
-            new usuari($nomUsuari, $email, $contrasena);
-        }
+    require 'usuari.php';
 
-    ?>
+    if (count($_COOKIE) > 0) {
+        new usuari($nomUsuari, $email, $contrasena);
+    }
 
-    <!-- Body -->
-    <?php
+?>
 
-        require 'body.php';
+<!-- Body -->
+<?php
 
-    ?>
+    require 'body.php';
+
+?>
