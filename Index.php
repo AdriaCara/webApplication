@@ -31,8 +31,7 @@
 
     $cookie_name = "usuario";
     if(isset($nomUsuari)) {
-        $cookie_value = $nomUsuari;
-        setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/");
+        setcookie($cookie_name, $_POST['nomUsuari'], time() + (86400 * 30), "/");
     }
 
     $nomDePagina = "Index";
@@ -45,7 +44,7 @@
 
     require 'usuari.php';
 
-    if (count($_COOKIE) > 0) {
+    if (count($_COOKIE) < 0) {
         new usuari($nomUsuari, $email, $contrasena);
     }
 

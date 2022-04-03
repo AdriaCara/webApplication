@@ -2,7 +2,7 @@
     <div>
         <h1><?php echo $nomDePagina ?></h1>
 
-        <p>
+        <p>Hola 
             <?php 
                 if (count($_COOKIE) > 0) {
                     echo $_COOKIE[$cookie_name];
