@@ -6,13 +6,8 @@
     session_start();
 
     if (isset($_POST['nomUsuari']) && isset($_POST['email']) && isset($_POST['contrasena'])) {
-        $_SESSION['usuari'] = new usuari($_POST['nomUsuari'], $_POST['email'], $_POST['contrasena']);
-    }
-
-    if( isset( $_SESSION['contador'] ) ) {
-        $_SESSION['contador'] += 1;
-    }else {
-        $_SESSION['contador'] = 1;
+        $usuari = new usuari($_POST['nomUsuari'], $_POST['email'], $_POST['contrasena']);
+        $_SESSION['usuari'] = serialize($usuari);
     }
 
     if(!isset($_COOKIE['usuario'])) {
