@@ -3,7 +3,7 @@
 
     session_start();
 
-    if (count($_COOKIE) < 0) {
+    if (isset($_COOKIE['usuarios'])) {
         setcookie("usuario", $_SESSION['nomUsuari'], time() - 3600);
     }
 

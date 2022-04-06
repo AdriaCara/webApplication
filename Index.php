@@ -29,9 +29,8 @@
         $_SESSION['contador'] = 1;
         }
 
-    $cookie_name = "usuario";
     if(isset($nomUsuari)) {
-        setcookie($cookie_name, $_POST['nomUsuari'], time() + (86400 * 30), "/");
+        setcookie("usuario", $_POST['nomUsuari'], time() + (86400 * 30), "/");
     }
 
     $nomDePagina = "Index";

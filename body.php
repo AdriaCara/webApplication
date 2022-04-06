@@ -3,8 +3,8 @@
         <h1><?php echo $nomDePagina ?></h1>
 
         <?php 
-            if (count($_COOKIE) > 0) {
-                echo "<p>Hola ".$_COOKIE[$cookie_name]."</p>";
+            if (isset($_COOKIE['usuario'])) {
+                echo "<p>Hola ".$_COOKIE["usuario"]."</p>";
             } else {
                 echo " anonim";
             }
