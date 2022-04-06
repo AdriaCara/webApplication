@@ -2,31 +2,27 @@
     <div>
         <h1><?php echo $nomDePagina ?></h1>
 
-        <p>Hola 
+        <p> 
             <?php 
                 if (count($_COOKIE) > 0) {
-                    echo $_COOKIE[$cookie_name];
+                    echo "<p>Hola ".$_COOKIE[$cookie_name]."</p>";
                 } else {
-                    echo "Hola anonim";
+                    echo " anonim";
                 }
             ?>
         </p>
-        <p>El teu correu és: [ <?php 
-                                    if (isset($_SESSION['email'])) {
-                                        echo $_SESSION['email'];
-                                    } 
-                                ?>
-            ]</p>
-        <p>La teva contrasenya és: [ <?php 
-                                        if (isset($_SESSION['contrasena'])) {
-                                            echo $_SESSION['contrasena'];
-                                        }
-                                    ?> ]</p>
-        <p>Numero d'accions: [
-            <?php
-                echo $_SESSION['contador'];
+        <p><?php 
+                if (isset($_SESSION['email'])) {
+                    echo "<p>El teu correu és: [ ".$_SESSION['email']." ]</p>";
+                } 
             ?>
-            ]
-        </p>
+        <p><?php 
+                if (isset($_SESSION['contrasena'])) {
+                    echo "<p>La teva contrasenya és: [ ".$_SESSION['contrasena']." ]</p>";
+                }
+            ?>
+            <?php
+                echo "<p>Numero d'accions: [ ".$_SESSION['contador']." ]</p>";
+            ?>
     </div>
 </div>

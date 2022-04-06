@@ -25,7 +25,7 @@
     }
     if( isset( $_SESSION['contador'] ) ) {
         $_SESSION['contador'] += 1;
-        }else {
+    }else {
         $_SESSION['contador'] = 1;
         }
 
@@ -43,10 +43,6 @@
     require 'footer.php';
 
     require 'usuari.php';
-
-    if (count($_COOKIE) < 0) {
-        new usuari($nomUsuari, $email, $contrasena);
-    }
 
 ?>
 
