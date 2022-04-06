@@ -1,17 +1,14 @@
 <!-- Header, navbar and footer -->
 <?php
 
+    require 'usuari.php';
+
     session_start();
 
-    if (isset($_POST['nomUsuari'])) {
-        $_SESSION['nomUsuari'] = $_POST['nomUsuari'];
+    if (isset($_POST['nomUsuari']) && isset($_POST['email']) && isset($_POST['contrasena'])) {
+        $_SESSION['usuari'] = new usuari($_POST['nomUsuari'], $_POST['email'], $_POST['contrasena']);
     }
-    if (isset($_POST['email'])) {
-        $_SESSION['email'] = $_POST['email'];
-    }
-    if (isset($_POST['contrasena'])) {
-        $_SESSION['contrasena'] = $_POST['contrasena'];
-    }
+
     if( isset( $_SESSION['contador'] ) ) {
         $_SESSION['contador'] += 1;
     }else {
@@ -29,8 +26,6 @@
     include ('navbar.php');
 
     require 'footer.php';
-
-    require 'usuari.php';
 
 ?>
 
