@@ -3,14 +3,15 @@
 
     session_start();
 
-    if (isset($_COOKIE['usuarios'])) {
-        setcookie("usuario", $_SESSION['nomUsuari'], time() - 3600);
-    }
+    if (isset($_SESSION['usuari'])) {
 
+        if (count($_COOKIE) > 0) {
+            setcookie("usuario", $_SESSION['usuari'->getNom], time() - (86400 * 30));
+        }
 
-    if (isset( $_SESSION['contador'])) {
         session_unset();
         session_destroy();
+
     }
 
     $nomDePagina = "Login";

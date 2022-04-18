@@ -23,15 +23,15 @@
 
             if( isset( $_SESSION['contador'] ) ) {
                 $_SESSION['contador'] += 1;
-            }else {
+            } else {
                 $_SESSION['contador'] = 1;
             }
 
             echo "<p>Numero d'accions: [ ".$_SESSION['contador']." ]</p>";
         ?>
         <?php
-            $infoUsuari = unserialize($_SESSION['usuari']);
-            var_dump($infoUsuari)
+            $infoUsuari = $_SESSION['usuari'];
+            print_r($infoUsuari);
         ?>
     </div>
 </div>
